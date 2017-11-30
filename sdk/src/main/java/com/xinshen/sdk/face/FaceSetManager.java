@@ -30,9 +30,9 @@ public class FaceSetManager {
     /**创建人脸集合*/
     public void createSet(String setName, final CreateSetCallBack callBack){
         if (setName == null)
-            throw new NullPointerException("The setName is null");
+            throw new NullPointerException("The setName cannot be null");
         if (callBack == null)
-            throw new NullPointerException("The CreateSetCallBack is null");
+            throw new NullPointerException("The CreateSetCallBack cannot be null");
         if (!setName.matches(Global.REG)){
             throw new IllegalArgumentException("The Name of FaceSet cannot contain characters \"&^@,=*'\"\" ");
         }
@@ -62,13 +62,13 @@ public class FaceSetManager {
     /**获得人脸集合信息*/
     public void getFaceSet(GetFaceSetCallBack callBack){
         if (callBack == null)
-            throw new NullPointerException("GetFaceSetCallBack is null");
+            throw new NullPointerException("GetFaceSetCallBack cannot be null");
         getFaceSet(1,callBack);
     }
 
     public void getFaceSet(final int start, final GetFaceSetCallBack callBack){
         if (callBack == null)
-            throw new NullPointerException("GetFaceSetCallBack is null");
+            throw new NullPointerException("GetFaceSetCallBack cannot be null");
         Map<String,String> map = new HashMap<String,String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret", Global.API_SECRET);

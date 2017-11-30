@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.orhanobut.logger.Logger;
 import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
 import com.xinshen.attendancesystem.util.SPUtils;
@@ -19,8 +17,6 @@ import com.xinshen.sdk.Iface.GetFaceSetCallBack;
 import com.xinshen.sdk.entity.CreateRespond;
 import com.xinshen.sdk.entity.ErrorRespond;
 import com.xinshen.sdk.entity.GetFaceSetRespond;
-import com.xinshen.sdk.face.FaceSetCreate;
-import com.xinshen.sdk.face.FaceSetInfo;
 import com.xinshen.sdk.face.FaceSetManager;
 
 import java.util.List;

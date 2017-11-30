@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.google.gson.Gson;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
@@ -20,15 +19,6 @@ import com.xinshen.attendancesystem.util.PermissionUtil;
 import com.xinshen.attendancesystem.util.SPUtils;
 import com.xinshen.attendancesystem.util.ScreenUtil;
 import com.xinshen.attendancesystem.util.ToastUtil;
-
-import com.xinshen.sdk.Iface.CreateSetCallBack;
-import com.xinshen.sdk.URL;
-import com.xinshen.sdk.entity.CreateRespond;
-import com.xinshen.sdk.entity.ErrorRespond;
-import com.xinshen.sdk.face.FaceSetCreate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.xinshen.attendancesystem.Global.Const.KEY_COMPANY_NAME;
 import static com.xinshen.attendancesystem.Global.Const.LOG_TAG;

@@ -32,11 +32,11 @@ public class FaceManager {
     /**添加人脸*/
     public void addFace(String setName, String face_tokens, final AddFaceCallBack callBack){
         if (setName == null)
-            throw new NullPointerException("The setName is null");
+            throw new NullPointerException("The setName cannot be null");
         if (face_tokens == null)
-            throw new NullPointerException("The face_tokens is null");
+            throw new NullPointerException("The face_tokens cannot be null");
         if (callBack == null)
-            throw new NullPointerException("The AddFaceCallBack is null");
+            throw new NullPointerException("The AddFaceCallBack cannot be null");
         Map<String,String> map = new HashMap<String,String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret",Global.API_SECRET);
@@ -59,11 +59,11 @@ public class FaceManager {
     /**删除人脸*/
     public void removeFace(String setName, String face_tokens, final RemoveFaceCallBack callBack){
         if (setName == null)
-            throw new NullPointerException("The setName is null");
+            throw new NullPointerException("The setName cannot be null");
         if (face_tokens == null)
-            throw new NullPointerException("The face_tokens is null");
+            throw new NullPointerException("The face_tokens cannot be null");
         if (callBack == null)
-            throw new NullPointerException("The RemoveFaceCallBack is null");
+            throw new NullPointerException("The RemoveFaceCallBack cannot be null");
         Map<String,String> map = new HashMap<String,String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret",Global.API_SECRET);
@@ -85,9 +85,9 @@ public class FaceManager {
     /**设置user_id*/
     public void setUserID(String face_token, String user_id,final SetUserIdCallBack callBack){
         if (face_token == null)
-            throw new NullPointerException("The face_token is null");
+            throw new NullPointerException("The face_token cannot be  null");
         if (user_id == null)
-            throw new NullPointerException("The userID is null");
+            throw new NullPointerException("The userID can not  null");
         if (!user_id.matches(Global.REG))
             throw new IllegalArgumentException("The Name of userID cannot contain characters \"&^@,=*'\"\" ");
         Map<String,String> map = new HashMap<String,String>();
