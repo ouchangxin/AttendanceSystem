@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="120dp" android:height="120dp">
+        <shape android:shape="oval">
+            <solid android:color="#a1a1a1"></solid>
+        </shape>
+    </item>
+    <item android:width="48dp" android:height="32dp" android:gravity="center">
+        <bitmap android:src="@drawable/icon_camera" android:antialias="true">
+            <size android:width="20dp" android:height="20dp"></size>
+        </bitmap>
+    </item>
+</layer-list>

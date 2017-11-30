@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="4dp"
+    android:background="#100e0e"
+    android:layout_height="120dp">
+
+    <ImageView
+        android:id="@+id/img_company"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/insert_company"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/img_company"
+        android:text="公司名称" />
+
+    <EditText
+        android:id="@+id/edit_company"
+        android:layout_width="match_parent"
+        android:layout_below="@id/img_company"
+        android:background="@drawable/bg_edit"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:maxLines="1"
+        android:maxLength="16"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:hint="请输入公司的名称..."
+        android:textColorHint="#918d8d"
+        android:focusableInTouchMode="true"
+        android:layout_height="36dp" />
+
+    <TextView
+        android:id="@+id/tv_cut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_company"
+        android:textColor="#dc0f0f"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:text="该公司已存在!!!"/>
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="64dp"
+        android:layout_height="38dp"
+        android:layout_below="@id/edit_company"
+        android:layout_alignParentRight="true"
+        android:text="确定"
+        android:textSize="14sp"
+        android:background="@drawable/bg_btn"/>
+</RelativeLayout>

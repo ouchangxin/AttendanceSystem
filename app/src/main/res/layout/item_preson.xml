@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#f4efef"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/img_card"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@mipmap/ic_launcher_round"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_card"
+        android:textColor="#000000"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"
+        android:text="姓名："/>
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/name"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"
+        android:text="小孩子"/>
+
+    <TextView
+        android:id="@+id/depart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignLeft="@id/name"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"
+        android:text="部门："/>
+
+    <TextView
+        android:id="@+id/text_depart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name"
+        android:layout_alignLeft="@id/text_name"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"
+        android:text="研发"/>
+</RelativeLayout>

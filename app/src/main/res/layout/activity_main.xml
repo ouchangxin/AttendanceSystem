@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical"
+    tools:context="com.xinshen.attendancesystem.main.MainActivity"
+    android:weightSum="1">
+
+  <TextView
+      android:id="@+id/text_year"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="16sp"
+      android:textColor="@color/color_main_date"
+      android:layout_marginTop="40dp"
+      android:layout_marginLeft="22dp"
+      android:text="2017 年"/>
+
+  <TextView
+      android:id="@+id/text_date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="28sp"
+      android:textColor="@color/color_main_date"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="22dp"
+      android:text="10 月 25 日"/>
+
+  <com.xinshen.attendancesystem.view.TwinkleView
+      android:id="@+id/text_detect"
+      android:text="实时检测"
+      android:textSize="28sp"
+      android:layout_marginTop="70dp"
+      android:layout_gravity="center"
+      android:layout_width="200dp"
+      android:layout_height="60dp"
+      android:textStyle="italic"
+      android:background="@drawable/drawable_button"
+      android:gravity="center" />
+
+  <com.xinshen.attendancesystem.view.TwinkleView
+      android:id="@+id/text_manager"
+      android:layout_width="200dp"
+      android:layout_height="60dp"
+      android:text="人员管理"
+      android:textSize="24sp"
+      android:textStyle="italic"
+      android:layout_marginTop="62dp"
+      android:layout_marginLeft="14dp"
+      android:background="@drawable/drawable_button"
+      android:gravity="center" />
+
+  <com.xinshen.attendancesystem.view.TwinkleView
+      android:id="@+id/text_attendance"
+      android:layout_width="200dp"
+      android:layout_height="60dp"
+      android:text="考勤记录"
+      android:textSize="26sp"
+      android:textStyle="italic"
+      android:background="@drawable/drawable_button"
+      android:layout_marginTop="62dp"
+      android:layout_marginLeft="86dp"
+      android:gravity="center" />
+
+</LinearLayout>
