@@ -2,6 +2,7 @@ package com.xinshen.attendancesystem.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
@@ -15,9 +16,12 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
+import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
+import com.xinshen.attendancesystem.receiver.NetWorkReceiver;
 import com.xinshen.attendancesystem.util.Base64Util;
 import com.xinshen.attendancesystem.util.ScreenUtil;
+import com.xinshen.attendancesystem.util.ToastUtil;
 
 import org.w3c.dom.Text;
 
@@ -40,7 +44,7 @@ public class MainActivity extends Activity {
     TextView text_manager;
     @BindView(R.id.text_attendance)
     TextView text_attendance;
-
+    private NetWorkReceiver netReceiver;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initTime();
+        register();
+    }
+
+    private void register() {
+        IntentFilter filter = new IntentFilter(Global.Const.ACTION_NETSTATE_CHANGE);
+        netReceiver  = new NetWorkReceiver();
+        registerReceiver(netReceiver,filter);
     }
 
     private void initTime() {
@@ -65,10 +76,18 @@ public class MainActivity extends Activity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.text_detect:
-                startActivity(new Intent(this,DetectActivity.class));
+                if (Global.Variable.CONNECTED){
+                    startActivity(new Intent(this,DetectActivity.class));
+                } else{
+                    ToastUtil.showShort(this,"无法连接到网络");
+                }
                 break;
             case R.id.text_manager:
-                startActivity(new Intent(this,StaffManagerActivity.class));
+                if (Global.Variable.CONNECTED){
+                    startActivity(new Intent(this,StaffManagerActivity.class));
+                } else{
+                    ToastUtil.showShort(this,"无法连接到网络");
+                }
                 break;
             case R.id.text_attendance:
 
@@ -76,4 +95,9 @@ public class MainActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(netReceiver);
+    }
 }

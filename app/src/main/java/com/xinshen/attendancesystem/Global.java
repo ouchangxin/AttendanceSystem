@@ -8,6 +8,7 @@ public class Global {
 
     public static class Const{
         public static final String LOG_TAG = "attendanceSystemLog";
+        public static final String ACTION_NETSTATE_CHANGE = "android.net.conn.CONNECTIVITY_CHANGE";
         //相关参数
         public static final int LOGIN_TIME = 3000;
         public static final String SET_NAME = "user";
@@ -21,5 +22,6 @@ public class Global {
     }
     public static class Variable{
         public static String COMPANY_NAME;
+        public static boolean CONNECTED;
     }
 }

@@ -16,7 +16,5 @@ public class MyApplication extends Application {
         //初始化bugly异常上报
         CrashReport.initCrashReport(getApplicationContext(), "90a88075fa", true);
         FaceConfig.newInstance().initFaceInfo(this);
-//        CrashHandler crashHandler = CrashHandler.getInstance();
-//        crashHandler.init(this);
     }
 }
