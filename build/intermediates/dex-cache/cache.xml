@@ -12,12 +12,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\acd11bea24d0647072c549b01b6ce3deedffddd7\output\jars\classes.jar"
+        jar="C:\Users\thinkpad\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_c8c98f9f37ce600842b45e149e8fc1e384782d25.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\library-2.4.0_2ebef1b696066196aacd3553206fc8f1553e4763.jar" />
     </item>
     <item
         is-multidex="false"
@@ -30,30 +30,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\59d5b3dba758afa4ccf72fb2d9096994e19cf076\output\jars\classes.jar"
+        jar="C:\Users\thinkpad\.android\build-cache\acd11bea24d0647072c549b01b6ce3deedffddd7\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b1ec9b0702cb8cd3c3f58531193c7bfb089f1858">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_967ad5fe640241dc6ee29fe1f8ab6ff0b616cec7.jar" />
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_c8c98f9f37ce600842b45e149e8fc1e384782d25.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\b95d390da5dd25931079d56235b2d5c3a0e7eaf0\output\jars\classes.jar"
+        jar="C:\Users\thinkpad\.android\build-cache\9ad34c1979f37550cd9a70b9e407531313407e79\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="98b5309c8d368a7c83ca5f90e0c905044c195edd">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_f0bf3e596d81a10aa966de7c1377ba500298905b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\Project\AttendanceSystem\sdk\build\intermediates\bundles\default\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="c9cd4b79e53ba7d58fa06af4177d3cf2f5cfecc7">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_5cd1db876d6834799bb059b019bced4ed262bdbf.jar" />
+        sha1="10f07d19ec7d5fb9322f834de9a07b761a6b794a">
+        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_cb8dfaa5152a08932edf800b1fa043cfd734df14.jar" />
     </item>
     <item
         is-multidex="false"
@@ -65,12 +56,21 @@
         <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_bbadf2fc6ae900932513b3b947fbb889aa53a8eb.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="D:\Android\Project\AttendanceSystem\sdk\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0bedc6cfeaff5d6c9d584c7672afff4c8ee9ca68">
+        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_5cd1db876d6834799bb059b019bced4ed262bdbf.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="D:\Android\Project\AttendanceSystem\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="036445d45b724e9713e44e39d7597c12fa5bb519">
+        sha1="d9544078e99839ed839d4496b4ea62cfe2904f34">
         <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_94444b71b86eec3a2eae3fe833d90717ecae1984\classes.dex" />
     </item>
     <item

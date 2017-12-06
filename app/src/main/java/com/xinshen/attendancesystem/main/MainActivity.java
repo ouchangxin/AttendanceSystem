@@ -3,29 +3,17 @@ package com.xinshen.attendancesystem.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
 import com.xinshen.attendancesystem.receiver.NetWorkReceiver;
-import com.xinshen.attendancesystem.util.Base64Util;
 import com.xinshen.attendancesystem.util.ScreenUtil;
 import com.xinshen.attendancesystem.util.ToastUtil;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -69,6 +57,7 @@ public class MainActivity extends Activity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         text_year.setText(year+" 年");
         text_date.setText(month+" 月"+" "+day+" 日");
+        Global.Variable.CURRENT_TIME = year+"-"+month+"-"+day;
     }
 
 
@@ -84,7 +73,7 @@ public class MainActivity extends Activity {
                 break;
             case R.id.text_manager:
                 if (Global.Variable.CONNECTED){
-                    startActivity(new Intent(this,StaffManagerActivity.class));
+                    startActivity(new Intent(this,ManagerActivity.class));
                 } else{
                     ToastUtil.showShort(this,"无法连接到网络");
                 }

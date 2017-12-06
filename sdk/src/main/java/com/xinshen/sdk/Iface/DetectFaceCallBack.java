@@ -1,6 +1,6 @@
 package com.xinshen.sdk.Iface;
 
-import com.xinshen.sdk.entity.DetectFaceRespone;
+import com.xinshen.sdk.entity.DetectFaceRespond;
 import com.xinshen.sdk.entity.ErrorRespond;
 
 /**
@@ -8,6 +8,6 @@ import com.xinshen.sdk.entity.ErrorRespond;
  */
 
 public interface DetectFaceCallBack {
-    void onRespond(DetectFaceRespone respond);
+    void onRespond(DetectFaceRespond respond);
     void onError(ErrorRespond error);
 }

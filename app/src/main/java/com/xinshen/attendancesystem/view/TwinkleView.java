@@ -45,7 +45,7 @@ public class TwinkleView extends android.support.v7.widget.AppCompatTextView {
             if (mViewWidth > 0 ){
                 mPaint = getPaint();
                 mLinearGradient = new LinearGradient(0,0,mViewWidth,0,new int[]{
-                        0xFF5E5B5B,0xFFD9D3D3,0xFFFFFFFF},null, Shader.TileMode.MIRROR);
+                        0xFFC2C1C1,0xFFDCDBDB,0xFFFFFFFF},null, Shader.TileMode.MIRROR);
                 mPaint.setShader(mLinearGradient);
                 mGradientMatrix = new Matrix();
             }

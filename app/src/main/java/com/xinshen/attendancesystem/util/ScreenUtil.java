@@ -163,7 +163,7 @@ public class ScreenUtil {
     public static int getDisplayOrientation(int degrees, int cameraId) {
         Camera.CameraInfo info = new Camera.CameraInfo();
         Camera.getCameraInfo(cameraId, info);
-        Logger.e("info need to rotate "+info.orientation);
+//        Logger.e("info need to rotate "+info.orientation);
         int result;
         if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
             result = (info.orientation + degrees) % 360;

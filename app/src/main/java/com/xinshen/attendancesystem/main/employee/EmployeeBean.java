@@ -6,28 +6,36 @@ package com.xinshen.attendancesystem.main.employee;
 
 public class EmployeeBean {
 
-    private String avator;
+    private String avator_url;
     private String name;
     private String depart;
     private String position;
     private String date;
+    private String face_token;
 
-    public EmployeeBean(String avator,String name,String depart,String position,String date){
-        this.avator = avator;
+    public EmployeeBean(String avator,String name,String depart,String position,String date,String face_token){
+        this.avator_url = avator;
         this.name = name;
         this.depart = depart;
         this.position = position;
         this.date = date;
+        this.face_token = face_token;
     }
 
-
-
-    public String getAvator() {
-        return avator;
+    public String getFace_token() {
+        return face_token;
     }
 
-    public void setAvator(String avator) {
-        this.avator = avator;
+    public void setFace_token(String face_token) {
+        this.face_token = face_token;
+    }
+
+    public String getAvator_url() {
+        return avator_url;
+    }
+
+    public void setAvator_url(String avator_url) {
+        this.avator_url = avator_url;
     }
 
     public String getName() {

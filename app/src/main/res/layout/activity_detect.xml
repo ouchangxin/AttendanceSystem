@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <SurfaceView
-        android:id="@+id/surface_view"
+        android:id="@+id/sv_detect"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

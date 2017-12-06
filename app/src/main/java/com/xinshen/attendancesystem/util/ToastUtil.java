@@ -4,11 +4,18 @@ package com.xinshen.attendancesystem.util;
  * Created by thinkpad on 2017/10/25.
  */
 
+import android.app.Activity;
 import android.content.Context;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.xinshen.attendancesystem.R;
 
 /**
  * Created by wangwentao on 2017/1/25.
@@ -40,7 +47,26 @@ public class ToastUtil {
             mToast.cancel();
         }
     }
-
+    public static void showOnUI(final Activity activity, final CharSequence message){
+        if (TextUtils.isEmpty(message))
+            return;
+        if (isShow){
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mToast == null) {
+                        mToast = new Toast(activity);
+                        mToast.setDuration(Toast.LENGTH_SHORT);
+                        mToast.setGravity(Gravity.BOTTOM,0,-20);
+                    }
+                    View view = LayoutInflater.from(activity).inflate(R.layout.common_toast,null);
+                    ((TextView)view.findViewById(R.id.tv_toast)).setText(message);
+                    mToast.setView(view);
+                    mToast.show();
+                }
+            });
+        }
+    }
     /**
      * 短时间显示Toast
      *
@@ -48,16 +74,20 @@ public class ToastUtil {
      * @param message
      */
     public static void showShort(Context context, CharSequence message) {
+        if (TextUtils.isEmpty(message))
+            return;
         if (isShow){
             if (mToast == null) {
-                mToast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
-            } else {
-                mToast.setText(message);
+                mToast = new Toast(context);
+                mToast.setDuration(Toast.LENGTH_SHORT);
+                mToast.setGravity(Gravity.BOTTOM,0,0);
             }
+            View view = LayoutInflater.from(context).inflate(R.layout.common_toast,null);
+            ((TextView)view.findViewById(R.id.tv_toast)).setText(message);
+            mToast.setView(view);
             mToast.show();
         }
     }
-
     /**
      * 短时间显示Toast
      *

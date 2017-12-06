@@ -15,6 +15,8 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApplication"
@@ -34,23 +36,23 @@
         <activity android:name=".main.MainActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name=".main.DetectActivity"></activity>
-        <activity android:name=".main.StaffManagerActivity"
+        <activity android:name=".main.ManagerActivity"
             android:theme="@style/ActivityTheme"/>
-        <activity android:name=".main.AddPersonActivity"
+        <activity android:name=".main.APersonActivity"
             android:theme="@style/ActivityTheme"></activity>
         <activity android:name=".main.EnterActivity"
             android:theme="@style/Theme.AppCompat.Dialog"></activity>
-        <!--PhotoPicker-->
-        <activity
-            android:name="com.foamtrace.photopicker.PhotoPickerActivity"
-            android:theme="@style/PhotoPickerTheme"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name="com.foamtrace.photopicker.PhotoPreviewActivity"
-            android:theme="@style/PhotoPickerTheme"/>
+        <activity android:name=".main.AFaceActivity"></activity>
         <!--Face++-->
         <meta-data android:name="face_api_key" android:value="2NIYsLEIdDuMncGiCRsv3WUzmBVm0mRe"/>
         <meta-data android:name="face_api_secret" android:value="zqdgod6ND5gjMnEvxYaw8g7LV_sLwRza"/>
+        <!--PhotoPicker-->
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
 
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ import com.xinshen.sdk.Iface.FindFaceCallBack;
 import com.xinshen.sdk.Iface.RequestCallBack;
 import com.xinshen.sdk.URL;
 import com.xinshen.sdk.entity.ErrorRespond;
-import com.xinshen.sdk.entity.FindFaceRespone;
+import com.xinshen.sdk.entity.FindFaceRespond;
 import com.xinshen.sdk.net.OkHttpManager;
 
 import java.util.HashMap;
@@ -27,11 +27,11 @@ public class FaceSearch {
     }
     public void findFace(String img, String setName, final FindFaceCallBack callBack){
         if (img == null)
-            throw new NullPointerException("image cannot be null");
+            throw new IllegalArgumentException("image cannot be null");
         if (setName == null)
-            throw new NullPointerException("The Name of FaceSet cannot be null");
+            throw new IllegalArgumentException("The Name of FaceSet cannot be null");
         if (callBack == null)
-            throw new NullPointerException("FindFaceCallBack cannot be null");
+            throw new IllegalArgumentException("FindFaceCallBack cannot be null");
         Map<String, String> map = new HashMap<String, String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret", Global.API_SECRET);
@@ -41,7 +41,7 @@ public class FaceSearch {
             @Override
             public void dataCallBack(String data, int stateCode) {
                 if (stateCode == 200){
-                    FindFaceRespone respone = new Gson().fromJson(data,FindFaceRespone.class);
+                    FindFaceRespond respone = new Gson().fromJson(data,FindFaceRespond.class);
                     callBack.onRespond(respone);
                 }else{
                     ErrorRespond error = new Gson().fromJson(data,ErrorRespond.class);

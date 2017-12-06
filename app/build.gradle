@@ -51,7 +51,12 @@ dependencies {
     compile 'com.tencent.bugly:crashreport:latest.release'
     //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //PhotoPicker
-    compile 'com.foamtrace:photopicker:1.0'
+    //recycleView
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    //Face++
     compile project(':sdk')
+    //PhotoPicker
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.7@aar'
 }

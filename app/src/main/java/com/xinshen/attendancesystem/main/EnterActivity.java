@@ -86,7 +86,7 @@ public class EnterActivity extends Activity {
             }
             @Override
             public void onError(ErrorRespond error) {
-                ToastUtil.showShort(EnterActivity.this, "集合创建错误\n"+error.getError_message());
+                ToastUtil.showOnUI(EnterActivity.this, "集合创建错误\n"+error.getError_message());
             }
         });
 
@@ -105,7 +105,7 @@ public class EnterActivity extends Activity {
             }
             @Override
             public void onError(ErrorRespond error) {
-                ToastUtil.showShort(EnterActivity.this,error.getError_message());
+                ToastUtil.showOnUI(EnterActivity.this,error.getError_message());
             }
         });
     }

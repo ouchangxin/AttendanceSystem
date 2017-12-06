@@ -42,7 +42,7 @@ import static com.xinshen.attendancesystem.Global.Const.CAMERA_ID;
 
 public class DetectActivity extends Activity implements SurfaceHolder.Callback, Camera.PreviewCallback {
 
-    @BindView(R.id.surface_view)
+    @BindView(R.id.sv_detect)
     SurfaceView mSurfaceView;
     @BindView(R.id.img)
     ImageView img;
@@ -206,6 +206,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
                                                 (int)((mid.y - eyesDis*1.25)*scaleHeight),
                                                 (int)((mid.x + eyesDis*1.25)*scaleWidth),
                                                 (int)((mid.y + eyesDis*1.90)*scaleHeight));
+                            Logger.e("left "+rect.left+" top "+rect.top+" right "+rect.right+" bottom "+rect.bottom);
                             rectList.add(rect);
                         }
                     }

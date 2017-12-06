@@ -7,9 +7,9 @@ import com.xinshen.sdk.Iface.RemoveFaceCallBack;
 import com.xinshen.sdk.Iface.RequestCallBack;
 import com.xinshen.sdk.Iface.SetUserIdCallBack;
 import com.xinshen.sdk.URL;
-import com.xinshen.sdk.entity.AddFaceRespone;
+import com.xinshen.sdk.entity.AddFaceRespond;
 import com.xinshen.sdk.entity.ErrorRespond;
-import com.xinshen.sdk.entity.RemoveFaceRespone;
+import com.xinshen.sdk.entity.RemoveFaceRespond;
 import com.xinshen.sdk.entity.SetUserIdRespond;
 import com.xinshen.sdk.net.OkHttpManager;
 
@@ -32,11 +32,11 @@ public class FaceManager {
     /**添加人脸*/
     public void addFace(String setName, String face_tokens, final AddFaceCallBack callBack){
         if (setName == null)
-            throw new NullPointerException("The setName cannot be null");
+            throw new IllegalArgumentException("The setName cannot be null");
         if (face_tokens == null)
-            throw new NullPointerException("The face_tokens cannot be null");
+            throw new IllegalArgumentException("The face_tokens cannot be null");
         if (callBack == null)
-            throw new NullPointerException("The AddFaceCallBack cannot be null");
+            throw new IllegalArgumentException("The AddFaceCallBack cannot be null");
         Map<String,String> map = new HashMap<String,String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret",Global.API_SECRET);
@@ -46,7 +46,7 @@ public class FaceManager {
             @Override
             public void dataCallBack(String data, int stateCode) {
                 if (stateCode == 200){
-                    AddFaceRespone respone = new Gson().fromJson(data,AddFaceRespone.class);
+                    AddFaceRespond respone = new Gson().fromJson(data,AddFaceRespond.class);
                     callBack.onRespond(respone);
                 }else{
                     ErrorRespond error = new Gson().fromJson(data,ErrorRespond.class);
@@ -73,7 +73,7 @@ public class FaceManager {
             @Override
             public void dataCallBack(String data, int stateCode) {
                 if (stateCode == 200){
-                    RemoveFaceRespone respone = new Gson().fromJson(data,RemoveFaceRespone.class);
+                    RemoveFaceRespond respone = new Gson().fromJson(data,RemoveFaceRespond.class);
                     callBack.onRespond(respone);
                 }else{
                     ErrorRespond error = new Gson().fromJson(data,ErrorRespond.class);

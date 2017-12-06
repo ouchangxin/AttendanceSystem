@@ -1,7 +1,6 @@
 package com.xinshen.sdk.Iface;
 
 import com.xinshen.sdk.entity.ErrorRespond;
-import com.xinshen.sdk.entity.RemoveFaceRespone;
 import com.xinshen.sdk.entity.SetUserIdRespond;
 
 /**

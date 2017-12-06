@@ -40,7 +40,7 @@
             android:scaleType="fitXY"
             android:src="@mipmap/bg_add"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_pick"
             android:layout_width="120dp"
             android:layout_height="120dp"
