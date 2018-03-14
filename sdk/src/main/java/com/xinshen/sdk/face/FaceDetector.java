@@ -18,17 +18,23 @@ import java.util.Map;
 
 public class FaceDetector {
     private static FaceDetector mDetector;
-    private FaceDetector(){}
-    public static synchronized FaceDetector newInstance(){
-        if (mDetector == null){
+
+    private FaceDetector() {
+    }
+
+    public static synchronized FaceDetector newInstance() {
+        if (mDetector == null) {
             mDetector = new FaceDetector();
         }
         return mDetector;
     }
-    public void detectFace(String img,DetectFaceCallBack callBack){
-       detectFace(img,false,callBack);
+
+    public void detectFace(String img, DetectFaceCallBack callBack) {
+        detectFace(img, false, callBack);
     }
-    public void detectFace(String img,boolean isCheckSexAndAge, final DetectFaceCallBack callBack) {
+
+    public void detectFace(String img, boolean isCheckSexAndAge, final DetectFaceCallBack
+            callBack) {
         if (img == null)
             throw new IllegalArgumentException("image cannot be null");
         if (callBack == null)
@@ -37,17 +43,17 @@ public class FaceDetector {
         map.put("api_key", Global.API_KEY);
         map.put("api_secret", Global.API_SECRET);
         map.put("image_base64", img);
-        if (isCheckSexAndAge){
-            map.put("return_attributes","gender,age");
+        if (isCheckSexAndAge) {
+            map.put("return_attributes", "gender,age");
         }
         OkHttpManager.getInstance().post_asy(URL.DETECT_URL, map, new RequestCallBack() {
             @Override
             public void dataCallBack(String data, int stateCode) {
-                if (stateCode == 200){
-                    DetectFaceRespond respone = new Gson().fromJson(data,DetectFaceRespond.class);
+                if (stateCode == 200) {
+                    DetectFaceRespond respone = new Gson().fromJson(data, DetectFaceRespond.class);
                     callBack.onRespond(respone);
-                }else{
-                    ErrorRespond error = new Gson().fromJson(data,ErrorRespond.class);
+                } else {
+                    ErrorRespond error = new Gson().fromJson(data, ErrorRespond.class);
                     callBack.onError(error);
                 }
             }

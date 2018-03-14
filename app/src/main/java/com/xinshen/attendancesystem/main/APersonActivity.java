@@ -49,7 +49,7 @@ public class APersonActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_person);
+        setContentView(R.layout.activity_aperson);
         ButterKnife.bind(this);
     }
 
@@ -96,7 +96,10 @@ public class APersonActivity extends Activity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        Global.Variable.CURRENT_TIME = year+"-"+month+"-"+day;
+        if (day<10)
+            Global.Variable.CURRENT_TIME = year+"-"+month+"-0"+day;
+        else
+            Global.Variable.CURRENT_TIME = year+"-"+month+"-"+day;
     }
 
     @Override

@@ -40,7 +40,8 @@ import static com.xinshen.attendancesystem.Global.Const.CAMERA_ID;
  * Created by thinkpad on 2017/10/29.
  */
 
-public class DetectActivity extends Activity implements SurfaceHolder.Callback, Camera.PreviewCallback {
+public class DetectActivity extends Activity implements SurfaceHolder.Callback, Camera
+        .PreviewCallback {
 
     @BindView(R.id.sv_detect)
     SurfaceView mSurfaceView;
@@ -66,6 +67,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     //Message
     private final int MESSAGE_SHOW_BITMAP = 0;
     private final int MESSAGE_SHOW_FRAME = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,24 +94,22 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        initCamera();
+        openCamera();
     }
 
-    private void initCamera() {
-        if (mCamera == null){
-            try{
+    private void openCamera() {
+        if (mCamera == null) {
+            try {
                 mCamera = Camera.open(CAMERA_ID);
-            }catch (RuntimeException e){
+            } catch (RuntimeException e) {
                 e.printStackTrace();
             }
         }
         //设置预览方向
         int rotation = ScreenUtil.getDisplayRotation(DetectActivity.this);
-//        Logger.e("rotation = "+rotation); //0
-        mRotate = ScreenUtil.getDisplayOrientation(rotation,CAMERA_ID);
-//        Logger.e("rotate = "+ mRotate); //90
+        mRotate = ScreenUtil.getDisplayOrientation(rotation, CAMERA_ID);
         mCamera.setDisplayOrientation(mRotate);
-        if (mSurfaceHolder!=null){
+        if (mSurfaceHolder != null) {
             try {
                 mCamera.setPreviewDisplay(mSurfaceHolder);
             } catch (IOException e) {
@@ -119,7 +119,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     }
 
     private void startPreview() {
-        if (mCamera!=null){
+        if (mCamera != null) {
             mCamera.setPreviewCallback(this);
             mCamera.startPreview();
         }
@@ -127,15 +127,15 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        if (holder.getSurface()!=null && mCamera!=null){
+        if (holder.getSurface() != null && mCamera != null) {
             mCamera.stopPreview();
-            Camera.Parameters parameters =mCamera.getParameters();
+            Camera.Parameters parameters = mCamera.getParameters();
             List<Camera.Size> sizes = parameters.getSupportedPictureSizes();
             float targetRatio = (float) width / height;
-            Camera.Size previewSize = ScreenUtil.getOptimalPreviewSize(this, sizes,targetRatio);
+            Camera.Size previewSize = ScreenUtil.getOptimalPreviewSize(this, sizes, targetRatio);
             mPreviewWidth = previewSize.width;
             mPreviewHeight = previewSize.height;
-            parameters.setPreviewSize(previewSize.width,previewSize.height);
+            parameters.setPreviewSize(previewSize.width, previewSize.height);
             mCamera.setParameters(parameters);
             startPreview();
         }
@@ -143,7 +143,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        if (mCamera!=null){
+        if (mCamera != null) {
             mCamera.stopPreview();
             mCamera.setPreviewCallback(null);
             mCamera.release();
@@ -158,74 +158,78 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
             public void run() {
                 long startTime = System.currentTimeMillis();
                 //TODO: 2017-11-10 yuv data[]转bitmap
-                if (yuvType == null){
-                    yuvType = new Type.Builder(rs,Element.U8(rs)).setX(data.length);
-                    in = Allocation.createTyped(rs,yuvType.create(),Allocation.USAGE_SCRIPT);
-                    rgbaType = new Type.Builder(rs,Element.RGBA_8888(rs)).
+                if (yuvType == null) {
+                    yuvType = new Type.Builder(rs, Element.U8(rs)).setX(data.length);
+                    in = Allocation.createTyped(rs, yuvType.create(), Allocation.USAGE_SCRIPT);
+                    rgbaType = new Type.Builder(rs, Element.RGBA_8888(rs)).
                             setX(mPreviewWidth).setY(mPreviewHeight);
-                    out = Allocation.createTyped(rs, rgbaType.create(),Allocation.USAGE_SCRIPT);
+                    out = Allocation.createTyped(rs, rgbaType.create(), Allocation.USAGE_SCRIPT);
                 }
                 in.copyFrom(data);
                 yuvToRgbIntrinsic.setInput(in);
                 yuvToRgbIntrinsic.forEach(out);
-                Bitmap bmp = Bitmap.createBitmap(mPreviewWidth, mPreviewHeight, Bitmap.Config.ARGB_8888);
+                Bitmap bmp = Bitmap.createBitmap(mPreviewWidth, mPreviewHeight, Bitmap.Config
+                        .ARGB_8888);
                 out.copyTo(bmp);
                 //TODO：1017-11-15 开始检测人脸
                 float scale = (float) mPreviewHeight / (float) mPreviewWidth;
                 int w = mSettingWidth;
                 int h = (int) (mSettingWidth * scale);
-                Bitmap detBitmap = Bitmap.createScaledBitmap(bmp,w,h,false);
-                if (!bmp.isRecycled()){
+                Bitmap detBitmap = Bitmap.createScaledBitmap(bmp, w, h, false);
+                if (!bmp.isRecycled()) {
                     bmp.recycle();
                 }
                 detBitmap = ImageUtil.checkBit(detBitmap);
                 detBitmap = ImageUtil.rotateBitmap(detBitmap, mRotate);//480 270-->270 480
                 int scaleWidth;
                 int scaleHeight;
-                if (mRotate%90 == 0){
-                     scaleWidth = mPreviewWidth/detBitmap.getHeight();
-                     scaleHeight = mPreviewHeight/detBitmap.getWidth();
-                }else{
-                     scaleWidth = mPreviewWidth/detBitmap.getWidth();
-                     scaleHeight = mPreviewHeight/detBitmap.getHeight();
+                if (mRotate % 90 == 0) {
+                    scaleWidth = mPreviewWidth / detBitmap.getHeight();
+                    scaleHeight = mPreviewHeight / detBitmap.getWidth();
+                } else {
+                    scaleWidth = mPreviewWidth / detBitmap.getWidth();
+                    scaleHeight = mPreviewHeight / detBitmap.getHeight();
                 }
-                FaceDetector detector = new FaceDetector(detBitmap.getWidth(),detBitmap.getHeight(), FACE_MAX_NUM);
+                FaceDetector detector = new FaceDetector(detBitmap.getWidth(), detBitmap
+                        .getHeight(), FACE_MAX_NUM);
                 FaceDetector.Face[] faces = new FaceDetector.Face[FACE_MAX_NUM];
                 int faceNum = detector.findFaces(detBitmap, faces);
                 rectList = new ArrayList<Rect>();
-                if (faceNum>0){
+                if (faceNum > 0) {
                     float eyesDis;
                     PointF mid = new PointF();
-                    for (int i=0;i<faceNum;i++){
-                        if (faces[i]!=null){
+                    for (int i = 0; i < faceNum; i++) {
+                        if (faces[i] != null) {
                             faces[i].getMidPoint(mid);
-                            eyesDis =  faces[i].eyesDistance();
+                            eyesDis = faces[i].eyesDistance();
                             if (CAMERA_ID == 1)
-                                mid.x = -mid.x+h; //前置摄像头镜像
-                            Rect rect = new Rect((int)((mid.x - eyesDis*1.25)*scaleWidth),
-                                                (int)((mid.y - eyesDis*1.25)*scaleHeight),
-                                                (int)((mid.x + eyesDis*1.25)*scaleWidth),
-                                                (int)((mid.y + eyesDis*1.90)*scaleHeight));
-                            Logger.e("left "+rect.left+" top "+rect.top+" right "+rect.right+" bottom "+rect.bottom);
+                                mid.x = -mid.x + h; //前置摄像头镜像
+                            Rect rect = new Rect((int) ((mid.x - eyesDis * 1.25) * scaleWidth),
+                                    (int) ((mid.y - eyesDis * 1.25) * scaleHeight),
+                                    (int) ((mid.x + eyesDis * 1.25) * scaleWidth),
+                                    (int) ((mid.y + eyesDis * 1.90) * scaleHeight));
+                            Logger.e("left " + rect.left + " top " + rect.top + " right " + rect
+                                    .right + " bottom " + rect.bottom);
                             rectList.add(rect);
                         }
                     }
                 }
                 mHandler.sendEmptyMessage(MESSAGE_SHOW_FRAME);
-                if (!detBitmap.isRecycled()){
+                if (!detBitmap.isRecycled()) {
                     detBitmap.recycle();
                 }
 //                Logger.e("spend time =  "+(System.currentTimeMillis()-startTime));
             }
         });
     }
+
     private List<Rect> rectList;
     private Bitmap temp;
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case MESSAGE_SHOW_BITMAP:
                     img.setImageBitmap(temp);
                     break;
@@ -239,7 +243,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mCamera!=null){
+        if (mCamera != null) {
             mCamera.stopPreview();
         }
     }

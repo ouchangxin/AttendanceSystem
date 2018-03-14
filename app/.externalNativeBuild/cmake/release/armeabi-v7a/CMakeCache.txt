@@ -21,7 +21,7 @@ ANDROID_ABI:UNINITIALIZED=armeabi-v7a
 ANDROID_NDK:UNINITIALIZED=D:\Android\SDK\ndk-bundle
 
 //No help, variable specified on the command line.
-ANDROID_PLATFORM:UNINITIALIZED=android-21
+ANDROID_PLATFORM:UNINITIALIZED=android-19
 
 //Archiver
 CMAKE_AR:FILEPATH=D:/Android/SDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-ar.exe
@@ -193,10 +193,10 @@ Project_BINARY_DIR:STATIC=D:/Android/Project/AttendanceSystem/app/.externalNativ
 Project_SOURCE_DIR:STATIC=D:/Android/Project/AttendanceSystem/app
 
 //Path to a library.
-log-lib:FILEPATH=D:/Android/SDK/ndk-bundle/platforms/android-21/arch-arm/usr/lib/liblog.so
+log-lib:FILEPATH=D:/Android/SDK/ndk-bundle/platforms/android-19/arch-arm/usr/lib/liblog.so
 
 //Dependencies for the target
-native-lib_LIB_DEPENDS:STATIC=general;D:/Android/SDK/ndk-bundle/platforms/android-21/arch-arm/usr/lib/liblog.so;
+native-lib_LIB_DEPENDS:STATIC=general;D:/Android/SDK/ndk-bundle/platforms/android-19/arch-arm/usr/lib/liblog.so;
 
 
 ########################

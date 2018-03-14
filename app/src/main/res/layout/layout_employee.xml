@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_employee"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_avator"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="姓名"
+        android:textColor="#bfbdbd"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:text="欧昌鑫"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@drawable/bg_black"
+        android:textColor="#b6b0b0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="职位"
+        android:textColor="#bfbdbd"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_depart"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:text="资深Android工程师"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@drawable/bg_black"
+        android:textColor="#b6b0b0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="部门"
+        android:textColor="#bfbdbd"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_job"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:text="研发部"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@drawable/bg_black"
+        android:textColor="#b6b0b0"/>
+</LinearLayout>

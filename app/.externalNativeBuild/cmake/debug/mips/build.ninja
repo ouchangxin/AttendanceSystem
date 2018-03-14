@@ -35,7 +35,7 @@ include rules.ninja
 build CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/native-lib.cpp
   DEFINES = -Dnative_lib_EXPORTS
   DEP_FILE = CMakeFiles\native-lib.dir\src\main\cpp\native-lib.cpp.o.d
-  FLAGS = -isystem D:/Android/SDK/ndk-bundle/sysroot/usr/include/mipsel-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mips32 -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -isystem D:/Android/SDK/ndk-bundle/sysroot/usr/include/mipsel-linux-android -D__ANDROID_API__=19 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mips32 -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -isystem D:/Android/SDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem D:/Android/SDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/mips/include -isystem D:/Android/SDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward
   IN_ABS = D:\Android\Project\AttendanceSystem\app\src\main\cpp\native-lib.cpp
   OBJECT_DIR = CMakeFiles\native-lib.dir
@@ -48,9 +48,9 @@ build CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o: CXX_COMPILER__nat
 #############################################
 # Link the shared library ..\..\..\..\build\intermediates\cmake\debug\obj\mips\libnative-lib.so
 
-build ../../../../build/intermediates/cmake/debug/obj/mips/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o | D$:/Android/SDK/ndk-bundle/platforms/android-21/arch-mips/usr/lib/liblog.so
-  LANGUAGE_COMPILE_FLAGS = -isystem D:/Android/SDK/ndk-bundle/sysroot/usr/include/mipsel-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mips32 -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info
-  LINK_FLAGS = -Wl,--exclude-libs,libgcc.a --sysroot D:/Android/SDK/ndk-bundle/platforms/android-21/arch-mips -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings "-LD:/Android/SDK/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/mips64el-linux-android/4.9.x/32/mips-r1" -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now
+build ../../../../build/intermediates/cmake/debug/obj/mips/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o | D$:/Android/SDK/ndk-bundle/platforms/android-19/arch-mips/usr/lib/liblog.so
+  LANGUAGE_COMPILE_FLAGS = -isystem D:/Android/SDK/ndk-bundle/sysroot/usr/include/mipsel-linux-android -D__ANDROID_API__=19 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mips32 -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info
+  LINK_FLAGS = -Wl,--exclude-libs,libgcc.a --sysroot D:/Android/SDK/ndk-bundle/platforms/android-19/arch-mips -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings "-LD:/Android/SDK/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/mips64el-linux-android/4.9.x/32/mips-r1" -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now
   LINK_LIBRARIES = -llog -lm "D:/Android/SDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/mips/libgnustl_static.a"
   OBJECT_DIR = CMakeFiles\native-lib.dir
   POST_BUILD = cd .

@@ -5,9 +5,9 @@ set(CMAKE_HOST_SYSTEM_PROCESSOR "AMD64")
 
 include("D:/Android/SDK/ndk-bundle/build/cmake/android.toolchain.cmake")
 
-set(CMAKE_SYSTEM "Android-21")
+set(CMAKE_SYSTEM "Android-19")
 set(CMAKE_SYSTEM_NAME "Android")
-set(CMAKE_SYSTEM_VERSION "21")
+set(CMAKE_SYSTEM_VERSION "19")
 set(CMAKE_SYSTEM_PROCESSOR "armv5te")
 
 set(CMAKE_CROSSCOMPILING "TRUE")

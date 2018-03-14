@@ -41,22 +41,25 @@ public class LoginActivity extends Activity {
                 .tag(LOG_TAG)
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
-       /**检测权限*/
+        /**检测权限*/
         String[] permissions = new String[]{Manifest.permission.CAMERA,
                 Manifest.permission.ACCESS_FINE_LOCATION};
-       if (PermissionUtil.checkPermission(this,permissions)){
-          login();
-       }
+        if (PermissionUtil.checkPermission(this, permissions)) {
+            login();
+        }
     }
 
 
-    /**权限检测回调*/
+    /**
+     * 权限检测回调
+     */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        for (int grant : grantResults){
-            if (grant!= PackageManager.PERMISSION_GRANTED){
-                ToastUtil.showShort(this,"未获得授权");
+        for (int grant : grantResults) {
+            if (grant != PackageManager.PERMISSION_GRANTED) {
+                ToastUtil.showShort(this, "未获得授权");
                 finish();
                 return;
             }
@@ -65,28 +68,28 @@ public class LoginActivity extends Activity {
     }
 
     private void login() {
-        String company = (String) SPUtils.get(this,KEY_COMPANY_NAME,"NULL");
-        if (!"NULL".equals(company)){
+        String company = (String) SPUtils.get(this, KEY_COMPANY_NAME, "NULL");
+        if (!"NULL".equals(company)) {
             Global.Variable.COMPANY_NAME = company;
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     LoginActivity.this.finish();
                 }
             }, Global.Const.LOGIN_TIME);
-        }else{
-            startActivityForResult(new Intent(this,EnterActivity.class),REQUEST_CODE);
+        } else {
+            startActivityForResult(new Intent(this, EnterActivity.class), REQUEST_CODE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE){
-            if (resultCode == RESULT_CANCELED){
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_CANCELED) {
                 finish();
-            }else if(resultCode == RESULT_OK){
-                startActivity(new Intent(this,MainActivity.class));
+            } else if (resultCode == RESULT_OK) {
+                startActivity(new Intent(this, MainActivity.class));
             }
         }
     }

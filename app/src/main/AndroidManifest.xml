@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".MyApplication"
@@ -34,15 +35,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.MainActivity"
-            android:launchMode="singleTask"></activity>
-        <activity android:name=".main.DetectActivity"></activity>
+            android:launchMode="singleTask"/>
+        <activity android:name=".main.DetectActivity"/>
         <activity android:name=".main.ManagerActivity"
             android:theme="@style/ActivityTheme"/>
         <activity android:name=".main.APersonActivity"
-            android:theme="@style/ActivityTheme"></activity>
+            android:theme="@style/ActivityTheme"/>
         <activity android:name=".main.EnterActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"></activity>
-        <activity android:name=".main.AFaceActivity"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".main.AFaceActivity"/>
+        <activity android:name=".main.InfoActivity"
+            android:theme="@style/ActivityTheme"/>
+        <activity android:name=".main.AttendanceActivity"
+                  android:theme="@style/ActivityTheme"/>
+
         <!--Face++-->
         <meta-data android:name="face_api_key" android:value="2NIYsLEIdDuMncGiCRsv3WUzmBVm0mRe"/>
         <meta-data android:name="face_api_secret" android:value="zqdgod6ND5gjMnEvxYaw8g7LV_sLwRza"/>

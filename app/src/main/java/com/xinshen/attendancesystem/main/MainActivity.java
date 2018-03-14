@@ -57,7 +57,6 @@ public class MainActivity extends Activity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         text_year.setText(year+" 年");
         text_date.setText(month+" 月"+" "+day+" 日");
-        Global.Variable.CURRENT_TIME = year+"-"+month+"-"+day;
     }
 
 
@@ -79,7 +78,7 @@ public class MainActivity extends Activity {
                 }
                 break;
             case R.id.text_attendance:
-
+                startActivity(new Intent(this,AttendanceActivity.class));
                 break;
         }
     }

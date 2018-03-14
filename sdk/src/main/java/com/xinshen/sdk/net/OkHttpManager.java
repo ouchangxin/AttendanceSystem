@@ -29,28 +29,31 @@ public class OkHttpManager {
     private static final MediaType JSON = MediaType.parse("Application/json; charset=utf-8");
     private Gson mGson;
 
-    private OkHttpManager(){
+    private OkHttpManager() {
         mClient = new OkHttpClient();
         mGson = new Gson();
     }
 
-    public synchronized static OkHttpManager getInstance(){
-        if (mManager == null){
+    public synchronized static OkHttpManager getInstance() {
+        if (mManager == null) {
             mManager = new OkHttpManager();
         }
         return mManager;
     }
 
-    /**同步post请求*/
-    public void post(final String url, final Map<String,String> map, final RequestCallBack callBack){
+    /**
+     * 同步post请求
+     */
+    public void post(final String url, final Map<String, String> map, final RequestCallBack
+            callBack) {
         if (url == null || map == null)
             return;
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 FormEncodingBuilder builder = new FormEncodingBuilder();
-                for (Map.Entry<String,String> entry : map.entrySet()){
-                    builder.add(entry.getKey(),entry.getValue());
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    builder.add(entry.getKey(), entry.getValue());
                 }
                 RequestBody body = builder.build();
                 Request request = new Request.Builder()
@@ -62,10 +65,10 @@ public class OkHttpManager {
                     Response response = call.execute();
                     String data = response.body().string();
                     int stateCode = response.code();
-                    if (response.isSuccessful()){
-                        callBack.dataCallBack(data,stateCode);
-                    }else{
-                        LogWrapper.e("网络请求失败: "+data+"\n"+response.toString());
+                    if (response.isSuccessful()) {
+                        callBack.dataCallBack(data, stateCode);
+                    } else {
+                        LogWrapper.e("网络请求失败: " + data + "\n" + response.toString());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -73,38 +76,37 @@ public class OkHttpManager {
             }
         }.start();
     }
-    /**异步post请求*/
-    public void post_asy(final String url, final Map<String,String> map, final RequestCallBack callBack){
-        if (url == null || map == null)
+
+    /**
+     * 异步post请求
+     */
+    public void post_asy(final String url, final Map<String, String> param, final RequestCallBack
+            callBack) {
+        if (url == null || param == null)
             return;
-        new Thread(){
-            @Override
-            public void run() {
-                FormEncodingBuilder builder = new FormEncodingBuilder();
-                for (Map.Entry<String,String> entry : map.entrySet()){
-                    builder.add(entry.getKey(),entry.getValue());
-                }
-                RequestBody body = builder.build();
-                Request request = new Request.Builder()
-                        .url(url)
-                        .post(body)
-                        .build();
-                Call call = mClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        LogWrapper.e("网络请求失败");
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String data = response.body().string();
-                        int stateCode = response.code();
-                        callBack.dataCallBack(data,stateCode);
-                    }
-                });
-
+            FormEncodingBuilder builder = new FormEncodingBuilder();
+            for (Map.Entry<String, String> entry : param.entrySet()) {
+                builder.add(entry.getKey(), entry.getValue());
             }
-        }.start();
+            RequestBody body = builder.build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            Call call = mClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Request request, IOException e) {
+                    LogWrapper.e("网络请求失败");
+                }
+
+                @Override
+                public void onResponse(Response response) throws IOException {
+                    String data = response.body().string();
+                    int stateCode = response.code();
+                    callBack.dataCallBack(data, stateCode);
+                }
+            });
+
     }
 }

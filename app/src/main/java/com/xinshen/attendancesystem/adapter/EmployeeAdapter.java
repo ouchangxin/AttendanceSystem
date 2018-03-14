@@ -60,7 +60,7 @@ public class EmployeeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null){
-            convertView = mInflater.inflate(R.layout.item_preson,parent,false);
+            convertView = mInflater.inflate(R.layout.item_employee,parent,false);
             holder = new ViewHolder();
             holder.avator = convertView.findViewById(R.id.img_card);
             holder.name = convertView.findViewById(R.id.text_name);

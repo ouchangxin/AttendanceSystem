@@ -2,75 +2,12 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\glide-3.7.0_edbc147d820cc4558498670ec465717660cb3a00.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\library-2.4.0_2ebef1b696066196aacd3553206fc8f1553e4763.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\288e33fcab295f830c6f8a8248de8a0268ff9bab\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_5cb653ad68337e38fb6209cf46eb0ca9f246a261.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\acd11bea24d0647072c549b01b6ce3deedffddd7\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_c8c98f9f37ce600842b45e149e8fc1e384782d25.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\9ad34c1979f37550cd9a70b9e407531313407e79\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="10f07d19ec7d5fb9322f834de9a07b761a6b794a">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_cb8dfaa5152a08932edf800b1fa043cfd734df14.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thinkpad\.android\build-cache\af1dab2fc91c7a16db304b63860dd7c509492ce8\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_bbadf2fc6ae900932513b3b947fbb889aa53a8eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\Project\AttendanceSystem\sdk\build\intermediates\bundles\default\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="0bedc6cfeaff5d6c9d584c7672afff4c8ee9ca68">
-        <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\pre-dexed\debug\classes_5cd1db876d6834799bb059b019bced4ed262bdbf.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="D:\Android\Project\AttendanceSystem\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="d9544078e99839ed839d4496b4ea62cfe2904f34">
+        sha1="6d3e9caa94126fb68ad9e9358332fb9e3bc71461">
         <dex dex="D:\Android\Project\AttendanceSystem\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_94444b71b86eec3a2eae3fe833d90717ecae1984\classes.dex" />
     </item>
     <item

@@ -15,7 +15,6 @@ public class Global {
         public static final String ACTION_NETSTATE_CHANGE = "android.net.conn.CONNECTIVITY_CHANGE";
         //相关参数
         public static final int LOGIN_TIME = 3000;
-        public static final String SET_NAME = "user";
         public static final int REQUEST_CODE = 1;
         //相机
         public static final int CAMERA_ID = 1;

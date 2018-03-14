@@ -77,7 +77,7 @@ public class AFaceActivity extends Activity implements SurfaceHolder.Callback, C
         super.onCreate(savedInstanceState);
         ScreenUtil.setFullScreen(this);
         ScreenUtil.keepScreenLight(this);
-        setContentView(R.layout.activity_add_face);
+        setContentView(R.layout.activity_aface);
         ButterKnife.bind(this);
         initSurfaceView();
         initField();

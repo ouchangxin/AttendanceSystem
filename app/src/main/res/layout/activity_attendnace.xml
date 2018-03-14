@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/color_title_bg"
+        android:layout_height="@dimen/dimen_title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日考勤"
+            android:textSize="16sp"
+            android:textColor="#cccccc"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_setting"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp" />
+
+    </RelativeLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/sky">
+
+
+        <TextView
+            android:id="@+id/tv_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星期四"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.362"/>
+
+        <TextView
+            android:id="@+id/tv_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018年1月4日"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_week"
+            app:layout_constraintTop_toBottomOf="@+id/tv_week"
+            app:layout_constraintVertical_bias="0.18"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+
+        android:background="#000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/sun"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginLeft="28dp"
+            android:text="上班"/>
+
+        <TextView
+            android:layout_width="80dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="142dp"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="9:00"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/moon"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginLeft="28dp"
+            android:text="下班"/>
+
+        <TextView
+            android:layout_width="80dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="142dp"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="18:00"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/staff"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginLeft="28dp"
+            android:text="员工"/>
+
+        <TextView
+            android:layout_width="80dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="142dp"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="20人"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_normal"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:src="@drawable/normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.26"/>
+
+        <TextView
+            android:id="@+id/tv_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正常"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_normal"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintLeft_toRightOf="@id/img_normal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_normal"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_normal"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@id/tv_normal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_normal"/>
+
+
+        <ImageView
+            android:id="@+id/img_late"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/late"
+            app:layout_constraintBottom_toBottomOf="@+id/img_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toEndOf="@+id/img_normal"
+            app:layout_constraintTop_toTopOf="@+id/img_normal"/>
+
+        <TextView
+            android:id="@+id/tv_late"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="迟到"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_late"
+            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintLeft_toRightOf="@id/img_late"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_late"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_late"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@id/tv_late"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_late"/>
+
+
+        <ImageView
+            android:id="@+id/img_leave"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/late"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/img_normal"
+            app:layout_constraintStart_toStartOf="@+id/img_normal"
+            app:layout_constraintTop_toBottomOf="@+id/img_normal"/>
+
+        <TextView
+            android:id="@+id/tv_leave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="早退"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_leave"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintLeft_toRightOf="@id/img_leave"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_leave"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_leave"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@id/tv_leave"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_leave"/>
+
+
+        <ImageView
+            android:id="@+id/img_absence"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:src="@drawable/absence"
+            app:layout_constraintBottom_toBottomOf="@+id/img_leave"
+            app:layout_constraintEnd_toEndOf="@+id/img_late"
+            app:layout_constraintStart_toStartOf="@+id/img_late"
+            app:layout_constraintTop_toTopOf="@+id/img_leave"/>
+
+        <TextView
+            android:id="@+id/tv_absence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="缺勤"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_absence"
+            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintLeft_toRightOf="@id/img_absence"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_absence"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@id/img_absence"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@id/tv_absence"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_absence"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>
