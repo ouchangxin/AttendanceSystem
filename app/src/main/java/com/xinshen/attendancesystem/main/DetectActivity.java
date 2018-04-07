@@ -15,15 +15,29 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.renderscript.Type;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
+import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
+import com.xinshen.attendancesystem.main.employee.EmployeeBean;
+import com.xinshen.attendancesystem.util.Base64Util;
+import com.xinshen.attendancesystem.util.DateUtil;
+import com.xinshen.attendancesystem.util.EmployeeUtils;
 import com.xinshen.attendancesystem.util.ImageUtil;
 import com.xinshen.attendancesystem.util.ScreenUtil;
+import com.xinshen.attendancesystem.util.GlideCircleTransform;
 import com.xinshen.attendancesystem.view.FrameView;
+import com.xinshen.sdk.Iface.FindFaceCallBack;
+import com.xinshen.sdk.entity.ErrorRespond;
+import com.xinshen.sdk.entity.FindFaceRespond;
+import com.xinshen.sdk.face.FaceSearch;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,6 +63,40 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     ImageView img;
     @BindView(R.id.frameView)
     FrameView mFrameView;
+    @BindView(R.id.portrait)
+    ImageView ivPortrait;
+    @BindView(R.id.detect_name)
+    TextView tvName;
+    @BindView(R.id.detect_depart)
+    TextView tvDepart;
+    @BindView(R.id.detect_job)
+    TextView tvJob;
+    @BindView(R.id.date)
+    TextView tvDate;
+    @BindView(R.id.time)
+    TextView tvTime;
+//    @BindView(R.id.name)
+//    TextView name;
+//    @BindView(R.id.department)
+//    TextView department;
+//    @BindView(R.id.job)
+//    TextView job;
+//    @BindView(R.id.date)
+//    TextView date;
+//    @BindView(R.id.time)
+//    TextView time;
+//    @BindView(R.id.portrait)
+//    ImageView portrait;
+//    @BindView(R.id.detect_name)
+//    TextView detectName;
+//    @BindView(R.id.detect_depart)
+//    TextView detectDepart;
+//    @BindView(R.id.detect_job)
+//    TextView detectJob;
+    @BindView(R.id.lyShow)
+    ConstraintLayout lyShow;
+
+
     //相机
     private SurfaceHolder mSurfaceHolder;
     private Camera mCamera;
@@ -65,8 +113,11 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     private List<Rect> rects;
     private final int FACE_MAX_NUM = 1;
     //Message
-    private final int MESSAGE_SHOW_BITMAP = 0;
-    private final int MESSAGE_SHOW_FRAME = 1;
+    private final int MESSAGE_SHOW_BITMAP = 0;  //展示识别的图片
+    private final int MESSAGE_SHOW_FRAME = 1;   //展示脸宽
+    private final int MESSAGE_SEARCH_FACE = 2; //匹配人脸
+    private boolean stopSearch;
+    private int currentReq;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +133,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
     private void initField() {
         mFixedThreadPool = Executors.newFixedThreadPool(4);
         rs = RenderScript.create(this);
-        rects = new ArrayList<Rect>();
+        rects = new ArrayList<>();
         mSettingWidth = 480;
         yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(rs, Element.U8_4(rs));
     }
@@ -194,7 +245,7 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
                         .getHeight(), FACE_MAX_NUM);
                 FaceDetector.Face[] faces = new FaceDetector.Face[FACE_MAX_NUM];
                 int faceNum = detector.findFaces(detBitmap, faces);
-                rectList = new ArrayList<Rect>();
+                rectList = new ArrayList<>();
                 if (faceNum > 0) {
                     float eyesDis;
                     PointF mid = new PointF();
@@ -208,10 +259,15 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
                                     (int) ((mid.y - eyesDis * 1.25) * scaleHeight),
                                     (int) ((mid.x + eyesDis * 1.25) * scaleWidth),
                                     (int) ((mid.y + eyesDis * 1.90) * scaleHeight));
-                            Logger.e("left " + rect.left + " top " + rect.top + " right " + rect
-                                    .right + " bottom " + rect.bottom);
+//                             Logger.e("left " + rect.left + " top " + rect.top + " right " + rect
+//                                    .right + " bottom " + rect.bottom);
                             rectList.add(rect);
                         }
+                    }
+                    if (!stopSearch) {
+                        Message msg = Message.obtain(mHandler, MESSAGE_SEARCH_FACE);
+                        msg.obj = Base64Util.bitmapToBase64(detBitmap);
+                        mHandler.sendMessage(msg);
                     }
                 }
                 mHandler.sendEmptyMessage(MESSAGE_SHOW_FRAME);
@@ -225,10 +281,11 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
 
     private List<Rect> rectList;
     private Bitmap temp;
-    private Handler mHandler = new Handler() {
 
+    private final int MESSAGE_SHOW_RESULT = 11;
+    private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public void handleMessage(Message msg) {
+        public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case MESSAGE_SHOW_BITMAP:
                     img.setImageBitmap(temp);
@@ -236,9 +293,80 @@ public class DetectActivity extends Activity implements SurfaceHolder.Callback, 
                 case MESSAGE_SHOW_FRAME:
                     mFrameView.setRectList(rectList);
                     break;
+                case MESSAGE_SHOW_RESULT:
+                    showResult((FindFaceRespond.ResultsBean) msg.obj);
+                    break;
+                case MESSAGE_SEARCH_FACE:
+                    stopSearch = true;
+                    FaceSearch.newInstance().findFace((String) msg.obj, Global.Variable
+                            .COMPANY_NAME, new FindFaceCallBack() {
+                        @Override
+                        public void onRespond(FindFaceRespond respond) {
+                            FindFaceRespond.ThresholdsBean thresholds = respond.getThresholds();
+                            double matchThreshold = thresholds.get_$1e3();
+                            List<FindFaceRespond.ResultsBean> results = respond.getResults();
+                            if (results != null) {
+                                double maxConfidence = 0;
+                                int t = 0;
+                                for (int i = 0; i < results.size(); ++i) {
+                                    if (results.get(i).getConfidence() > maxConfidence) {
+                                        maxConfidence = results.get(i).getConfidence();
+                                        t = i;
+                                    }
+                                }
+                                FindFaceRespond.ResultsBean result = results.get(t);
+                                if (maxConfidence > matchThreshold) {
+                                    Message msg = Message.obtain();
+                                    msg.what = MESSAGE_SHOW_RESULT;
+                                    msg.obj = result;
+                                    mHandler.sendMessage(msg);
+                                } else {
+                                    Logger.e("未匹配到人员 " + result.getUser_id());
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(ErrorRespond error) {
+                            stopSearch = false;
+                            Logger.e("人脸检测错误：" + error.getError_message());
+                        }
+                    });
+                    break;
+            }
+            return true;
+        }
+    });
+
+    private void showResult(FindFaceRespond.ResultsBean resultsBean){
+        List<EmployeeBean> employees = EmployeeUtils.getEmployees(this);
+        for (EmployeeBean employee : employees){
+            if (employee.getFace_token().equals(resultsBean.getFace_token())){
+                long time = System.currentTimeMillis();
+                tvDate.setText(DateUtil.getDate(time));
+                tvTime.setText(DateUtil.getTime(time));
+                Glide.with(this).load(employee.getAvator_url()).
+                        transform(new GlideCircleTransform(this)).into(ivPortrait);
+                tvName.setText(employee.getName());
+                tvDepart.setText(employee.getDepart());
+                tvJob.setText(employee.getPosition());
+                lyShow.setVisibility(View.VISIBLE);
+
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        stopSearch = false;
+                        lyShow.setVisibility(View.GONE);
+                    }
+                },4000);
+
+                break;
             }
         }
-    };
+
+    }
+
+
 
     @Override
     protected void onPause() {

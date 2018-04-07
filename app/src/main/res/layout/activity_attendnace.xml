@@ -31,11 +31,11 @@
 
     </RelativeLayout>
 
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/sky">
-
 
         <TextView
             android:id="@+id/tv_week"
@@ -64,7 +64,50 @@
             app:layout_constraintStart_toStartOf="@+id/tv_week"
             app:layout_constraintTop_toBottomOf="@+id/tv_week"
             app:layout_constraintVertical_bias="0.18"/>
+
+        <LinearLayout
+            android:id="@+id/ly_menu"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/color_title_bg"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <TextView
+                android:id="@+id/tv_at_config"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_menu"
+                android:gravity="center"
+                android:textColor="#cccccc"
+                android:text="考勤设置"/>
+
+
+            <TextView
+                android:id="@+id/tv_at_record"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_menu"
+                android:gravity="center"
+                android:textColor="#cccccc"
+                android:text="考勤记录"/>
+
+
+        </LinearLayout>
+
+
     </android.support.constraint.ConstraintLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -93,6 +136,7 @@
             android:text="上班"/>
 
         <TextView
+            android:id="@+id/tv_work"
             android:layout_width="80dp"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -128,6 +172,7 @@
             android:text="下班"/>
 
         <TextView
+            android:id="@+id/tv_offWork"
             android:layout_width="80dp"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -162,6 +207,7 @@
             android:text="员工"/>
 
         <TextView
+            android:id="@+id/tv_total"
             android:layout_width="80dp"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -207,7 +253,7 @@
             app:layout_constraintVertical_bias="0.0"/>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_num_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14"
@@ -246,7 +292,7 @@
             app:layout_constraintVertical_bias="0.0"/>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tv_num_late"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
@@ -283,6 +329,7 @@
             app:layout_constraintVertical_bias="0.0"/>
 
         <TextView
+            android:id="@+id/tv_num_leave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
@@ -318,6 +365,7 @@
             app:layout_constraintVertical_bias="0.0"/>
 
         <TextView
+            android:id="@+id/tv_num_absent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"

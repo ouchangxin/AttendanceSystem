@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -32,14 +32,20 @@ android {
         compile.exclude module: 'okhttp'
     }
 }
-
+greendao {
+    schemaVersion 1//数据库版本号
+    daoPackage 'com.xinshen.attendancesystem.dao'//设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+    //targetGenDirTest：设置生成单元测试目录
+    //generateTests：设置自动生成单元测试用例
+}
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'com.android.support:appcompat-v7:26.+'
-    implementation 'com.android.support:design:26.+'
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     //GSON
@@ -63,11 +69,13 @@ dependencies {
     implementation project(':sdk')
     //PhotoPicker
     implementation 'com.nineoldandroids:library:2.4.0'
-    implementation 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+//    implementation 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     implementation 'me.iwf.photopicker:PhotoPicker:0.9.7@aar'
     //EventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
     //Bmob
     implementation 'cn.bmob.android:bmob-sdk:3.5.5'
     implementation 'cn.bmob.android:http-legacy:1.0'
+    //greenDao
+    implementation 'org.greenrobot:greendao:3.2.2'
 }

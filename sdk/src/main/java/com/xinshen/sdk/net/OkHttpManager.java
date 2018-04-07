@@ -1,22 +1,22 @@
 package com.xinshen.sdk.net;
 
-import android.util.Log;
 
 import com.google.gson.Gson;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-import com.xinshen.sdk.Global;
+
 import com.xinshen.sdk.Iface.RequestCallBack;
 import com.xinshen.sdk.util.LogWrapper;
 
 import java.io.IOException;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by thinkpad on 2017/10/22.
@@ -51,7 +51,7 @@ public class OkHttpManager {
         new Thread() {
             @Override
             public void run() {
-                FormEncodingBuilder builder = new FormEncodingBuilder();
+                FormBody.Builder builder = new FormBody.Builder();
                 for (Map.Entry<String, String> entry : map.entrySet()) {
                     builder.add(entry.getKey(), entry.getValue());
                 }
@@ -84,7 +84,7 @@ public class OkHttpManager {
             callBack) {
         if (url == null || param == null)
             return;
-            FormEncodingBuilder builder = new FormEncodingBuilder();
+        FormBody.Builder builder = new FormBody.Builder();
             for (Map.Entry<String, String> entry : param.entrySet()) {
                 builder.add(entry.getKey(), entry.getValue());
             }
@@ -96,12 +96,12 @@ public class OkHttpManager {
             Call call = mClient.newCall(request);
             call.enqueue(new Callback() {
                 @Override
-                public void onFailure(Request request, IOException e) {
+                public void onFailure(Call call, IOException e) {
                     LogWrapper.e("网络请求失败");
                 }
 
                 @Override
-                public void onResponse(Response response) throws IOException {
+                public void onResponse(Call call, Response response) throws IOException {
                     String data = response.body().string();
                     int stateCode = response.code();
                     callBack.dataCallBack(data, stateCode);

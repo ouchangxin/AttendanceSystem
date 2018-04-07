@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.xinshen.attendancesystem.R;
 import com.xinshen.attendancesystem.main.employee.EmployeeBean;
-import com.xinshen.attendancesystem.util.glide.GlideCircleTransform;
+import com.xinshen.attendancesystem.util.GlideCircleTransform;
 
 import java.util.List;
 

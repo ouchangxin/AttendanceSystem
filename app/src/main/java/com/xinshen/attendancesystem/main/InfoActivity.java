@@ -14,7 +14,7 @@ import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
 import com.xinshen.attendancesystem.main.employee.EmployeeBean;
 import com.xinshen.attendancesystem.main.event.MessageEvent;
-import com.xinshen.attendancesystem.util.glide.GlideCircleTransform;
+import com.xinshen.attendancesystem.util.GlideCircleTransform;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -66,7 +66,7 @@ public class InfoActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_avator:
-               if (btn_avator.isClickable() == true){
+               if (btn_avator.isClickable()){
                    PhotoPicker.builder()
                            .setPhotoCount(1)
                            .setShowCamera(true)

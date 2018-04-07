@@ -25,8 +25,8 @@ public class FaceSearch {
         }
         return mSearch;
     }
-    public void findFace(String img, String setName, final FindFaceCallBack callBack){
-        if (img == null)
+    public void findFace(String base64, String setName, final FindFaceCallBack callBack){
+        if (base64 == null)
             throw new IllegalArgumentException("image cannot be null");
         if (setName == null)
             throw new IllegalArgumentException("The Name of FaceSet cannot be null");
@@ -35,7 +35,7 @@ public class FaceSearch {
         Map<String, String> map = new HashMap<String, String>();
         map.put("api_key", Global.API_KEY);
         map.put("api_secret", Global.API_SECRET);
-        map.put("image_file", img);
+        map.put("image_base64", base64);
         map.put("outer_id",setName);
         OkHttpManager.getInstance().post_asy(URL.SERACH_URL, map, new RequestCallBack() {
             @Override

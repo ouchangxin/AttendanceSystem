@@ -15,7 +15,7 @@ import com.xinshen.attendancesystem.Global;
 import com.xinshen.attendancesystem.R;
 import com.xinshen.attendancesystem.main.employee.EmployeeBean;
 import com.xinshen.attendancesystem.util.ToastUtil;
-import com.xinshen.attendancesystem.util.glide.GlideCircleTransform;
+import com.xinshen.attendancesystem.util.GlideCircleTransform;
 
 import java.util.ArrayList;
 import java.util.Calendar;

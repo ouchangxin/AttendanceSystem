@@ -287,14 +287,12 @@ public class AFaceActivity extends Activity implements SurfaceHolder.Callback, C
         finish();
     }
 
-    private Handler mHandler = new Handler(){
-
+    private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what){
-            }
+        public boolean handleMessage(Message msg) {
+            return true;
         }
-    };
+    });
 
     @Override
     protected void onPause() {

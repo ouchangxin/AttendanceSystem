@@ -19,8 +19,7 @@ import java.util.Map;
 public class FaceDetector {
     private static FaceDetector mDetector;
 
-    private FaceDetector() {
-    }
+    private FaceDetector() {}
 
     public static synchronized FaceDetector newInstance() {
         if (mDetector == null) {
